@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wishes</title>
+    {% load static %}
+    <link rel="stylesheet" href='{% static "css/wishes.css" %}' />
+  </head>
+  <body>
+    <div class="mainContainer">
+      <div class="header">
+        <h2>Hello {{ user_profile.first_name }}</h2>
+        <div>
+          <a href="logout">Logout</a>
+          <a href="/wishes/stats">View stats</a>
+          <a href="/wishes/new">Make a wish</a>
+        </div>
+      </div>
+
+      <div class="wishList">
+        <p>Your wish list:</p>
+        <table>
+          <tr>
+            <th>Item</th>
+            <th>Date Added</th>
+            <th>Actions</th>
+          </tr>
+          {% for wish in user_profile.wishes.all %}
+          <tr>
+            <td>{{ wish.item }}</td>
+            <td>{{ wish.added_date }}</td>
+            <td>
+              <a href="wishes/remove/{{wish.id}}">Remove</a> |
+              <a href="wishes/edit/{{wish.id}}">Edit</a> |
+              <a href="granted/{{wish.id}}">Granted!</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </table>
+      </div>
+      <div class="grantList">
+        <p>Granted wishes:</p>
+        <table>
+          <tr>
+            <th>Item</th>
+            <th>Wisher</th>
+            <th>Date Added</th>
+            <th>Date Granted</th>
+            <th>Likes</th>
+            <th>Action</th>
+          </tr>
+          {% for grant in granted_wishes %}
+          <tr>
+            <td>{{ grant.item }}</td>
+            <td>{{ grant.user.first_name }}</td>
+            <td>{{ grant.added_date }}</td>
+            <td>{{ grant.granted_date }}</td>
+            <td>{{ grant.liked.all|length }}</td>
+            <td><a href="/wishes/liked/{{grant.id}}">Like</a></td>
+          </tr>
+          {% endfor %}
+        </table>
+      </div>
+    </div>
+  </body>
+</html>

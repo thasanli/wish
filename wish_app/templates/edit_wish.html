@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit your wish</title>
+    {% load static %}
+    <link rel="stylesheet" href='{% static "css/edit_wish.css" %}' />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h2>Hello {{ request.session.user_name }}! Lets edit your wish!</h2>
+        <a href="/logout"> Logout </a>
+      </div>
+      <div class="errorMessagesDiv">
+        {% if messages %}
+        <ul>
+          {% for message in messages %}
+          <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </div>
+      <form action="/edit_wish/{{edit_wish.id}}" method="POST">
+        {% csrf_token %}
+        <div>
+          <label for="Wish">I wish for</label>
+          <input name="wish" type="text" value="{{edit_wish.item}}" />
+        </div>
+        <div>
+          <label for="Description"> Description</label>
+          <input name="description" type="text" value="{{edit_wish.desc}}" />
+        </div>
+        <div class="buttonsDiv">
+          <button type="reset"><a href="/wishes">Cancel</a></button>
+          <button type="submit">Edit</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

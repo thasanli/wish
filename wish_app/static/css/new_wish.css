@@ -1,0 +1,88 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    margin: 0 auto;
+    margin-top: 30px;
+    width: 600px;
+    height: 500px;
+
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header a{
+    all: unset;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 30px;
+    background-color:rgb(121, 121, 236);
+    border: none;
+    color: white;
+    text-align: center;
+    font-size: 15px;
+    cursor: pointer;
+    box-shadow: 4px 4px rgb(109, 106, 106);
+}
+
+
+
+.errorMessagesDiv{
+    padding: 10px;
+    width: 350px;
+    height: 60px;
+    color: rgb(245, 111, 111);
+
+}
+form{
+    display: flex;
+    flex-direction: column;
+    width: 300px;    
+    height: 200px;
+    padding-top: 80px;
+    padding-left: 40px;
+    padding-right: 40px;
+    border-top: 5px solid rgb(121, 121, 236);
+    border-left: 5px solid rgb(121, 121, 236);
+    border-right: 5px solid rgb(109, 106, 106) ;
+    border-bottom: 5px solid rgb(109, 106, 106);
+}
+form div{
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    margin: 5px;
+
+}
+form input{
+    width: 180px;
+    border: 2px solid black;
+}
+form button{
+    all: unset;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 30px;
+    background-color:rgb(121, 121, 236);
+    border: none;
+    color: white;
+    text-align: center;
+    font-size: 15px;
+    cursor: pointer;
+    box-shadow: 4px 4px rgb(109, 106, 106);
+    margin: 10px;
+}
+form a{
+    all: unset;
+    color: white;
+}

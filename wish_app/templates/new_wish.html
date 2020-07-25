@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Zetta&display=swap" rel="stylesheet">
+    <title>New Wish</title>
+    {% load static %}
+    <link rel="stylesheet" href='{% static "css/new_wish.css" %}' />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h2>Hello {{ request.session.user_name }}! Make a wish!</h2>
+        <a href="/logout"> Logout </a>
+      </div>
+      <div class="errorMessagesDiv">
+        {% if messages %}
+        <ul>
+          {% for message in messages %}
+          <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </div>
+      <form action="wish_submit" method="POST">
+        {% csrf_token %}
+        <div>
+          <label for="Wish">I wish for</label>
+          <input name="wish" type="text" />
+        </div>
+        <div>
+          <label for="Description"> Description</label>
+          <input name="description" type="text" />
+        </div>
+        <div class="buttonsDiv">
+          <button type="reset"><a href="/wishes">Cancel</a></button>
+          <button type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
